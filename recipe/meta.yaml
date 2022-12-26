@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/r-barnes/dggridR/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  sha256: af477fbcc1e7c85ee6add66f7368c9a248cf483b2f4fca6020ff05ddc051d9fb
 
 build:
   merge_build_host: True  # [win]
