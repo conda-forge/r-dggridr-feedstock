@@ -1,4 +1,4 @@
-{% set version = '2.0.4' %}
+{% set version = '3.0.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,12 +7,12 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url: {{ cran_mirror }}/src/contrib/Archive/dggridR/dggridR_{{ version }}.tar.gz
-  sha256: 83a9f2ea7c9b4152baa6f47da72b72d73835ed45e62b71bcf6deccebc63cc086
+  url: https://github.com/r-barnes/dggridR/archive/refs/tags/{{ version }}.tar.gz
+  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -33,17 +33,21 @@ requirements:
     - r-base
     - r-rcpp >=0.12.12
     - r-dplyr >=0.4
-    - r-ggplot2 >=2.1
     - r-rgdal >=1.1
+    - r-rlang >=0.4
+    - r-sf >=1.0
     - r-sp >=1.2
+    - r-ggplot2 >=2.1
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.12
     - r-dplyr >=0.4
-    - r-ggplot2 >=2.1
     - r-rgdal >=1.1
+    - r-rlang >=0.4
+    - r-sf >=1.0
     - r-sp >=1.2
+    - r-ggplot2 >=2.1
 
 test:
   commands:
@@ -52,16 +56,16 @@ test:
 
 about:
   home: https://github.com/r-barnes/dggridR/
-  license: MIT
+  license: AGPL-3.0-or-later
   summary: Spatial analyses involving binning require that every bin have the same area, but
     this is impossible using a rectangular grid laid over the Earth or over any projection
     of the Earth. Discrete global grids use hexagons, triangles, and diamonds to overcome
     this issue, overlaying the Earth with equally-sized bins. This package provides
     utilities for working with discrete global grids, along with utilities to aid in
     plotting such data.
-  license_family: MIT
+  license_family: AGPL
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE.md
 
 extra:
   recipe-maintainers:
@@ -71,8 +75,8 @@ extra:
 # Package: dggridR
 # Type: Package
 # Title: Discrete Global Grids
-# Version: 2.0.4
-# Date: 2020-04-29
+# Version: 3.0.0
+# Date: 2022-03-17
 # Author: Richard Barnes [aut, cre], Kevin Sahr [cph, ctb], Gerald Evenden [cph], Angus Johnson [cph], Frank Warmerdam [cph], Even Rouault [cph], Lian Song [ctb]
 # Maintainer: Richard Barnes <rijard.barnes@gmail.com>
 # NeedsCompilation: yes
