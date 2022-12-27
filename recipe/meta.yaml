@@ -65,7 +65,7 @@ about:
     plotting such data.
   license_family: AGPL
   license_file:
-    - LICENSE.md
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/AGPL'
 
 extra:
   recipe-maintainers:
