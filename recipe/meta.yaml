@@ -7,22 +7,24 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  url: https://github.com/r-barnes/dggridR/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: af477fbcc1e7c85ee6add66f7368c9a248cf483b2f4fca6020ff05ddc051d9fb
+  url:
+    - {{ cran_mirror }}/src/contrib/dggridR_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/dggridR/dggridR_{{ version }}.tar.gz
+  sha256: 4aa6e58b31209a4578626661bc7583bfad2f1a96fd8ce804d0d6701f10a325a4
 
 build:
   merge_build_host: True  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}              # [not win]
-    - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('cxx') }}            # [not win]
-    - {{ compiler('m2w64_cxx') }}      # [win]
+    - {{ compiler('c') }}          # [not win]
+    - {{ compiler('m2w64_c') }}    # [win]
+    - {{ compiler('cxx') }}        # [not win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
     - {{ posix }}make
     - {{ posix }}sed               # [win]
@@ -33,21 +35,17 @@ requirements:
     - r-base
     - r-rcpp >=0.12.12
     - r-dplyr >=0.4
-    - r-rgdal >=1.1
     - r-rlang >=0.4
     - r-sf >=1.0
     - r-sp >=1.2
-    - r-ggplot2 >=2.1
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.12
     - r-dplyr >=0.4
-    - r-rgdal >=1.1
     - r-rlang >=0.4
     - r-sf >=1.0
     - r-sp >=1.2
-    - r-ggplot2 >=2.1
 
 test:
   commands:
