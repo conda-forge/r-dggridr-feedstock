@@ -36,18 +36,16 @@ requirements:
   host:
     - r-base
     - r-rcpp >=0.12.12
-    - r-dplyr >=0.4
-    - r-rlang >=0.4
+    - r-collapse >=1.8.0
+    - r-s2 >=1.1
     - r-sf >=1.0
-    - r-sp >=1.2
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.12.12
-    - r-dplyr >=0.4
-    - r-rlang >=0.4
+    - r-collapse >=1.8.0
+    - r-s2 >=1.1
     - r-sf >=1.0
-    - r-sp >=1.2
 
 test:
   commands:
